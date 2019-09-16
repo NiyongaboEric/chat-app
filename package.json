@@ -15,8 +15,10 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "coverage": "jest",
+    "showcoverage": "start coverage/lcov-report/index.html"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +35,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/NiyongaboEric/chat-app"
+  "homepage": "https://github.com/NiyongaboEric/chat-app",
+  "devDependencies": {
+    "codecov": "^3.5.0"
+  }
 }
