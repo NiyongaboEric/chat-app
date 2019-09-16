@@ -1,1 +1,1 @@
-[![Coverage Status](https://coveralls.io/repos/github/NiyongaboEric/chat-app/badge.svg?branch=master)](https://coveralls.io/github/NiyongaboEric/chat-app?branch=master) 
+[![Coverage Status](https://coveralls.io/repos/github/NiyongaboEric/chat-app/badge.svg?branch=master)](https://coveralls.io/github/NiyongaboEric/chat-app?branch=master) https://travis-ci.org/NiyongaboEric/chat-app.svg?branch=develop [![Maintainability](https://api.codeclimate.com/v1/badges/e4148ba028a59f6ae935/maintainability)](https://codeclimate.com/github/NiyongaboEric/chat-app/maintainability)
