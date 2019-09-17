@@ -1,0 +1,91 @@
+.signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.signup-message {
+  width: 40%;
+  background-image: url('../../../Images/signup-chart.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.signup-content {
+  width: 60%;
+  overflow-y: scroll;
+}
+
+.signup-content .logo {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.signup-content .signup-details, .signup-content .signup-form {
+  width: 50%;
+  margin: auto;
+}
+
+.signup-details .motto {
+  color: #2e4369;
+}
+
+.signup-content .signup-details span.signin-link {
+  font-size: 18px;
+  display: block;
+  text-align: center;
+}
+
+.signup-content .signup-details a {
+  color: #00b9ff;
+  text-decoration: underline;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.signup-content .form-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  color: rgba(0, 0, 0, .7);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  margin-top: 20px;
+  height: 35px;
+  font-size: 15px;
+  width: 100%;
+  font-family: fontawesome;
+  border: 1px solid rgba(0, 0, 0, .12);
+}
+
+button {
+  background-color: #2ed06e;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  background-size: 100%;
+  margin-top: 20px;
+  height: 40px;
+  font-size: 18px;
+  width: 100%;
+  font-family: fontawesome;
+  border: 1px solid rgba(0, 0, 0, .12);
+}
+
+input:active {
+  outline: #00b9ff;
+}
+
+button:hover {
+  background-color: #1B7940;
+}
+
+.signup-form form {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
