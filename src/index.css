@@ -17,3 +17,8 @@ body {
 .container {
   min-height: 100%;
 }
+
+.input-error {
+  margin-top: 5px;
+  color: red;
+}

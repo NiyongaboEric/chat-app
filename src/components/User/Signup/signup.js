@@ -1,49 +1,83 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../../Images/logo.jpg';
-import './signup.css';
+import PersonCredentials from './PersonCredentials';
+import PersonInformation from './PersonInformation';
 
 
 class UserSignup extends Component {
+  state = {
+    currentState: 1,
+    users: [
+      {
+        fullnames: '',
+        email: '',
+        password: '',
+        username: '',
+        telephone: '',
+        image: null,
+      }
+    ]
+  }
+
+  handleChange = (e) => {
+    const users = [...this.state.users];
+    const { value, name } = e.target
+    users[0][name] = value
+    this.setState({ users: users });
+  }
+
+  fileSelectedHandler = (e) => {
+    let { image } = { ...this.state.users[0] };
+    image = e.target.files[0];
+    const users = { ...this.state.users[0], ...{ image } }
+    this.setState({ users: [users] });
+  }
+
+  prevStep = (e) => {
+    let { currentState } = { ...this.state }
+    currentState--;
+    this.setState({ currentState })
+  }
+
+  nextStep = (e) => {
+    let { currentState } = { ...this.state }
+    currentState++;
+    this.setState({ currentState })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   render() {
-    return (
-      <div className="signup">
-        <div className="signup-message">
-        </div>
-        <div className="signup-content">
-          <div className="logo">
-            <img src={logo} alt="Free Online Logo Maker by DesignEvo free logo creator" />
-          </div>
-          <div className="signup-details">
-            <h2 className="motto">Talk to everyone without borders</h2>
-            <span className="signin-link">Already signed up?
-              <Link to="/signin"> Login</Link>
-            </span>
-          </div>
-          <div className="signup-form">
-            <form>
-              <div className="form-input">
-                <label>Full names</label>
-                <input type="text" placeholder="&#xf007; Shamim Kelai"></input>
-              </div>
-              <div className="form-input">
-                <label>Email</label>
-                <input type="email" placeholder="&#xf0e0; shamim@kelai.ex"></input>
-              </div>
-              <div className="form-input">
-                <label>Password</label>
-                <input type="password" placeholder="&#xf023; *****"></input>
-              </div>
-              <div className="form-input">
-                <button type="submit">Continue</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
-  };
-}
+    console.log('current', this.state);
+    const {
+      fullnames,
+      email,
+      password,
+      username,
+      telephone } = this.state.users[0];
+    const values = { fullnames, email, password, username, telephone };
 
+    return (
+      <React.Fragment>
+        {
+          this.state.currentState === 1 ?
+            <PersonCredentials
+              handleChange={this.handleChange}
+              nextStep={this.nextStep}
+              values={values}
+            /> :
+            <PersonInformation
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              prevStep={this.prevStep}
+              nextStep={this.nextStep}
+              fileSelectedHandler={this.fileSelectedHandler}
+              values={values}
+            />
+        }
+      </React.Fragment>
+    );
+  }
+}
 export default UserSignup;
