@@ -7,7 +7,7 @@ import Advertise from '../Advertise/Advert';
 class PersonInformation extends Component {
 
   render() {
-    const { handleChange, prevStep, values, fileSelectedHandler, handleSubmit } = this.props;
+    const { handleChange, prevStep, values, fileSelectedHandler, handleSubmit, error } = this.props;
     return (
       <div className="signup">
         <Advertise />
@@ -29,6 +29,7 @@ class PersonInformation extends Component {
                   onChange={handleChange}
                   placeholder="&#xf2c1; @yourUniqueName" />
               </div>
+              {error.username && <div className="input-error">{error.username}</div>}
               <div className="form-input">
                 <label>Telephone</label>
                 <input
@@ -39,6 +40,8 @@ class PersonInformation extends Component {
                   onChange={handleChange}
                   placeholder="&#xf095; 2507----" />
               </div>
+              {error.telephone && <div className="input-error">{error.telephone}</div>}
+              {error.image && <div className="input-error">{error.image}</div>}
               <div className="form-input">
                 <label>Profile Picture</label>
                 <input

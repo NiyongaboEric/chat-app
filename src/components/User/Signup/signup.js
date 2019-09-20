@@ -2,20 +2,27 @@ import React, { Component } from 'react';
 import PersonCredentials from './PersonCredentials';
 import PersonInformation from './PersonInformation';
 
+import { validateSignup } from '../../../Validation/Validate';
+
+
 
 class UserSignup extends Component {
-  state = {
-    currentState: 1,
-    users: [
-      {
-        fullnames: '',
-        email: '',
-        password: '',
-        username: '',
-        telephone: '',
-        image: null,
-      }
-    ]
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentState: 1,
+      users: [
+        {
+          fullnames: '',
+          email: '',
+          password: '',
+          username: '',
+          telephone: '',
+          image: null,
+        }
+      ],
+      error: '',
+    }
   }
 
   handleChange = (e) => {
@@ -38,14 +45,30 @@ class UserSignup extends Component {
     this.setState({ currentState })
   }
 
-  nextStep = (e) => {
-    let { currentState } = { ...this.state }
-    currentState++;
-    this.setState({ currentState })
+  nextStep = async (e) => {
+    let {
+      currentState,
+      users } = await { ...this.state };
+    const isError = await validateSignup(users[0]);
+    await this.setState({ error: isError });
+
+    const noError = ['fullnames', 'email', 'password'];
+    const currentError = Object.keys(this.state.error)[0];
+    if (!noError.includes(currentError)) {
+      currentState++;
+      await this.setState({ currentState });
+    }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let { users, error } = { ...this.state };
+    const isError = validateSignup(users[0]);
+    this.setState({ error: isError });
+
+    if (!Object.keys(error)[0]) {
+      console.log('handleSubmit', isError, error);
+    }
   }
 
   render() {
@@ -56,24 +79,27 @@ class UserSignup extends Component {
       password,
       username,
       telephone } = this.state.users[0];
+    const { error } = this.state;
     const values = { fullnames, email, password, username, telephone };
-
     return (
       <React.Fragment>
         {
-          this.state.currentState === 1 ?
-            <PersonCredentials
+          this.state.currentState === 1
+            ? <PersonCredentials
               handleChange={this.handleChange}
               nextStep={this.nextStep}
               values={values}
-            /> :
-            <PersonInformation
+              error={error}
+            />
+
+            : <PersonInformation
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               prevStep={this.prevStep}
               nextStep={this.nextStep}
               fileSelectedHandler={this.fileSelectedHandler}
               values={values}
+              error={error}
             />
         }
       </React.Fragment>

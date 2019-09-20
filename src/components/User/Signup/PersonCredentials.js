@@ -8,8 +8,7 @@ import Advertise from '../Advertise/Advert';
 class PersonCredentials extends Component {
 
   render() {
-    const { handleChange, nextStep, values } = this.props;
-
+    const { handleChange, nextStep, values, error } = this.props;
     return (
       <div className="signup">
         <Advertise />
@@ -35,7 +34,7 @@ class PersonCredentials extends Component {
                   placeholder="&#xf007; Shamim Kelai"
                 />
               </div>
-              <div className="input-error">err</div>
+              {error.fullnames && <div className="input-error">{error.fullnames}</div>}
               <div className="form-input">
                 <label>Email</label>
                 <input
@@ -46,6 +45,7 @@ class PersonCredentials extends Component {
                   placeholder="&#xf0e0; shamim@kelai.ex"
                 />
               </div>
+              {error.email && <div className="input-error">{error.email}</div>}
               <div className="form-input">
                 <label>Password</label>
                 <input
@@ -56,6 +56,7 @@ class PersonCredentials extends Component {
                   placeholder="&#xf023; *****"
                 />
               </div>
+              {error.password && <div className="input-error">{error.password}</div>}
               <div className="form-input">
                 <button
                   onClick={nextStep}
