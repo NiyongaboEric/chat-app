@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router";
 import PersonCredentials from './PersonCredentials';
 import PersonInformation from './PersonInformation';
 
 import { validateSignup } from '../../../Validation/Validate';
-
+import axios from 'axios';
 
 
 class UserSignup extends Component {
@@ -13,7 +14,7 @@ class UserSignup extends Component {
       currentState: 1,
       users: [
         {
-          fullnames: '',
+          fullname: '',
           email: '',
           password: '',
           username: '',
@@ -22,6 +23,7 @@ class UserSignup extends Component {
         }
       ],
       error: '',
+      redirect: false
     }
   }
 
@@ -52,7 +54,7 @@ class UserSignup extends Component {
     const isError = await validateSignup(users[0]);
     await this.setState({ error: isError });
 
-    const noError = ['fullnames', 'email', 'password'];
+    const noError = ['fullname', 'email', 'password'];
     const currentError = Object.keys(this.state.error)[0];
     if (!noError.includes(currentError)) {
       currentState++;
@@ -62,27 +64,57 @@ class UserSignup extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { users, error } = { ...this.state };
+    let { users } = { ...this.state };
     const isError = validateSignup(users[0]);
     this.setState({ error: isError });
+    this.submitData();
+  }
 
-    if (!Object.keys(error)[0]) {
-      console.log('handleSubmit', isError, error);
-    }
+  submitData = () => {
+    // send data
+    const data = this.state.users[0];
+    const formData = new FormData();
+    formData.set('fullname', data.fullname);
+    formData.set('email', data.email);
+    formData.set('password', data.password);
+    formData.set('username', data.username);
+    formData.set('telephone', data.telephone);
+    formData.append('image', data.image);
+    const url = "https://chat-app-edition-api.herokuapp.com/api/signup";
+    axios.post(url,
+      formData,
+      {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+    )
+      .then(res => {
+        const { token } = res.data.data;
+        window.localStorage.setItem(token, token);
+        this.setState({ redirect: true });
+      })
+      .catch(err => {
+        const { message } = err.response.data;
+        const responseError = { response: message };
+        this.setState({ error: responseError });
+      })
+      .catch(err => this.setState({ error: { response: "request failed" } }));
   }
 
   render() {
     console.log('current', this.state);
     const {
-      fullnames,
+      fullname,
       email,
       password,
       username,
       telephone } = this.state.users[0];
     const { error } = this.state;
-    const values = { fullnames, email, password, username, telephone };
+    const values = { fullname, email, password, username, telephone };
     return (
       <React.Fragment>
+        {this.state.redirect && <Redirect to="/signin" />}
         {
           this.state.currentState === 1
             ? <PersonCredentials

@@ -28,13 +28,14 @@ class PersonCredentials extends Component {
                 <label>Full names</label>
                 <input
                   type="text"
-                  name="fullnames"
-                  value={values.fullnames}
+                  name="fullname"
+                  value={values.fullname}
                   onChange={handleChange}
                   placeholder="&#xf007; Shamim Kelai"
+                  required
                 />
               </div>
-              {error.fullnames && <div className="input-error">{error.fullnames}</div>}
+              {error.fullname && <div className="input-error">{error.fullname}</div>}
               <div className="form-input">
                 <label>Email</label>
                 <input
@@ -43,6 +44,7 @@ class PersonCredentials extends Component {
                   value={values.email}
                   onChange={handleChange}
                   placeholder="&#xf0e0; shamim@kelai.ex"
+                  required
                 />
               </div>
               {error.email && <div className="input-error">{error.email}</div>}
@@ -54,6 +56,7 @@ class PersonCredentials extends Component {
                   value={values.password}
                   onChange={handleChange}
                   placeholder="&#xf023; *****"
+                  required
                 />
               </div>
               {error.password && <div className="input-error">{error.password}</div>}

@@ -13,7 +13,7 @@ class PersonInformation extends Component {
         <Advertise />
         <div className="signup-content">
           <div className="signup-confirm-title">
-            <p> Congratulation <strong>{values.fullnames ? values.fullnames : 'User'}</strong>, This is final step <FontAwesomeIcon icon={faCheck} style={{ color: "#2ed06e" }} /> </p>
+            <p> Congratulation <strong>{values.fullname ? values.fullname : 'User'}</strong>, This is final step <FontAwesomeIcon icon={faCheck} style={{ color: "#2ed06e" }} /> </p>
           </div>
           <div className="signup-confirm-message">
             <p>Before we finish, we want you to be unique and help friends to identify you easily.</p>
@@ -27,7 +27,9 @@ class PersonInformation extends Component {
                   name="username"
                   value={values.username}
                   onChange={handleChange}
-                  placeholder="&#xf2c1; @yourUniqueName" />
+                  placeholder="&#xf2c1; @yourUniqueName"
+                  required
+                />
               </div>
               {error.username && <div className="input-error">{error.username}</div>}
               <div className="form-input">
@@ -38,7 +40,9 @@ class PersonInformation extends Component {
                   value={values.telephone}
                   min="0"
                   onChange={handleChange}
-                  placeholder="&#xf095; 2507----" />
+                  placeholder="&#xf095; 2507----"
+                  required
+                />
               </div>
               {error.telephone && <div className="input-error">{error.telephone}</div>}
               {error.image && <div className="input-error">{error.image}</div>}
@@ -49,6 +53,7 @@ class PersonInformation extends Component {
                   name="image"
                   accept="image/*"
                   onChange={fileSelectedHandler}
+                  required
                 />
               </div>
               <div className="form-confirm-btn">
@@ -65,6 +70,7 @@ class PersonInformation extends Component {
                 >
                   Confirm
                 </button>
+                {error.response && <div className="input-error">{error.response}</div>}
               </div>
             </form>
           </div>
