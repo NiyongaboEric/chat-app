@@ -1,8 +1,8 @@
 
 const validateSignup = (values) => {
   let errors = {};
-  if (!values.fullnames) {
-    errors.fullnames = 'full names are required';
+  if (!values.fullname) {
+    errors.fullname = 'full names are required';
   }
   else if (!values.email) {
     errors.email = 'Email is required';
