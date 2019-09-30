@@ -5,7 +5,8 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Signup from '../Components/User/Signup/Signup';
 import Signin from '../Components/User/Signin/Signin';
 
-function Routers() {
+
+const Routers = () => {
   return (
     <Router>
       <div className="container">
