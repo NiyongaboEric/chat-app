@@ -1,0 +1,8 @@
+.advert-message {
+  width: 40%;
+  background-image: url('../../../Images/signup-chart.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}

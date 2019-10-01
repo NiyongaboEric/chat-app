@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #ececec;
+  height: 100%;
+  font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.input-error {
+  margin-top: 5px;
+  color: red;
+}
