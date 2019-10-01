@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Images/logo.jpg';
-import './Signup.css';
+import './signup.css';
 import Advertise from '../Advertise/Advert';
 
 

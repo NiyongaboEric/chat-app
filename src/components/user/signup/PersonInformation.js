@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import './Signup.css';
+import './signup.css';
 import Advertise from '../Advertise/Advert';
 
 class PersonInformation extends Component {
