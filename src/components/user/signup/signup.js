@@ -103,7 +103,6 @@ class UserSignup extends Component {
   }
 
   render() {
-    console.log('current', this.state);
     const {
       fullname,
       email,
