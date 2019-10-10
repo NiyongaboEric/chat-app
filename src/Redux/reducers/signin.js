@@ -1,10 +1,10 @@
-import { signinInitialStates } from '../store/initialStates';
+import { initialStates } from '../store/initialStates';
 import * as types from '../actionTypes/signinAction';
 
-
-const signinReducer = (state = signinInitialStates, { type, payload }) => {
+const { signin } = initialStates;
+const signinReducer = (state = signin, { type, payload }) => {
   switch (type) {
-    case types.USER_IS_SIGNIN:
+    case types.USER_SIGNIN:
       return payload;
 
     default:

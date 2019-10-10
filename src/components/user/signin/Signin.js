@@ -1,10 +1,23 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import './signin.css';
 import '../signup/signup.css';
 
-const Signin = () => {
-  
+
+const onHandleChange = (e) => {
+  console.log('email ', e.target.name);
+  console.log('pasword ', e.target.name);
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // const temp = dispatch({ type: "SOMETHING" })
+  console.log('on submit', e.dispatch);
+}
+
+const Signin = (props) => {
+  const { email, password } = props.signin;
   return (
     <div className="signup-container">
       <h1 className="logo">
@@ -15,12 +28,13 @@ const Signin = () => {
       </h1>
       <div className="panel" id="login">
         <h3>Log in to your account</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-input signin-email">
             <input
               type="email"
               name="email"
-              placeholder="Email address"
+              placeholder={email}
+              onChange={onHandleChange}
               required
             />
             <label
@@ -31,7 +45,8 @@ const Signin = () => {
             <input
               type="password"
               name="password"
-              placeholder="password"
+              placeholder={password}
+              onChange={onHandleChange}
               required
             />
             <label
@@ -55,4 +70,18 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+const mapStateToProps = (state) => {
+  return {
+    signin: state.signin
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  console.log("dispatch dispatch ", dispatch);
+  
+  return {
+    "dispatch": "dispatch",
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
