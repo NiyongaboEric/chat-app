@@ -3,6 +3,7 @@ import * as types from '../actionTypes/signinAction';
 
 const { signin } = initialStates;
 const signinReducer = (state = signin, { type, payload }) => {
+  console.log(' Inside reducer yes !! ', { type, payload });
   switch (type) {
     case types.USER_SIGNIN:
       return payload;
