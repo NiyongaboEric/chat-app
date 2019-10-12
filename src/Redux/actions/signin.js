@@ -2,12 +2,19 @@ import * as types from '../actionTypes/signinAction';
 import axios from 'axios';
 
 
-export const signin = (data) => {
+export const signin = (message) => {
   return {
     type: types.USER_SIGNIN,
-    payload: { data: 'successful logged in' }
+    payload: message
   }
 };
+
+export const signinError = (message) => {
+  return {
+    type: types.USER_SIGNIN_ERROR,
+    payload: message,
+  }
+}
 
 export const signinApi = ({ email, password }) => {
   return (dispatch) => {
@@ -25,14 +32,21 @@ export const signinApi = ({ email, password }) => {
       )
       .then(res => {
         if (res.status === 200) {
-          dispatch(signin(res));
-          // pass 
-          // set token
+          const { token } = res.data.data;
+          const { message, status } = res.data;
+          localStorage.setItem('token', token);
+          dispatch(signin({ message, status }));
         }
       })
       .catch(err => {
-        // error message
-        // dispatch(signin(err));
+        if (err.response) {
+          const { message } = err.response.data;
+          return dispatch(signinError({ message }));
+        }
+        if (err.request) {
+          return dispatch(signinError({ message: 'Network Error' }));
+        }
+        return dispatch(signinError({ message: 'Server Error' }));
       })
   }
 };

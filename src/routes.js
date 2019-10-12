@@ -6,6 +6,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import UserSignup from './components/user/signup/signup.js';
 import Signin from './components/user/signin/signin.js';
 import store from './Redux/store/store';
+import Dashboard from './components/dashboard/main.page';
 
 const Routers = () => {  
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
           <Switch>
             <Route path="/signup" exact component={UserSignup} />
             <Route path="/signin" exact component={Signin} />
+            <Route path="/dashboard" exact component={Dashboard} />
           </Switch>
         </div>
       </Router>
