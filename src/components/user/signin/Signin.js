@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './signin.css';
 import '../signup/signup.css';
 import { signinApi } from '../../../Redux/actions/signin';
-
+import SigninError from '../../errors/signin';
 
 class Signin extends Component  {
   
@@ -19,13 +19,11 @@ class Signin extends Component  {
   }
 
   render() {
-    const { email, password } = this.props.signin;
+    const { email, password, message } = this.props.signin;
     const token = localStorage.getItem('token');
-    console.log(this.props);
-    
     return (
       <React.Fragment>
-        { token ? <Redirect to="dashboard" /> : null }
+        { token && <Redirect to="dashboard" /> }
           <div className="signup-container">
             <h1 className="logo">
               <Link
@@ -35,7 +33,9 @@ class Signin extends Component  {
             </h1>
             <div className="panel" id="login">
               <h3>Log in to your account</h3>
+
               <form onSubmit={this.onhandleSubmit}>
+              { message && <SigninError error={message}/> }
                 <div className="form-input signin-email">
                   <input
                     type="email"
@@ -71,7 +71,7 @@ class Signin extends Component  {
                 New to Vuga?&nbsp;<span>Sign Up</span>
               </Link>
             </div>
-          </div> 
+          </div>
       </React.Fragment>
     );
   }
