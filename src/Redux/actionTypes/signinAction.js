@@ -1,0 +1,2 @@
+export const USER_SIGNIN = "USER_SIGNIN";
+export const USER_SIGNIN_ERROR = "USER_SIGNIN_ERROR";
