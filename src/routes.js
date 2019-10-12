@@ -7,8 +7,10 @@ import UserSignup from './components/user/signup/signup.js';
 import Signin from './components/user/signin/signin.js';
 import store from './Redux/store/store';
 import Dashboard from './components/dashboard/main.page';
+import Signout from './components/user/signout/signout';
 
-const Routers = () => {  
+
+const Routers = () => {
   return (
     <Provider store={store}>
       <Router>
@@ -17,6 +19,7 @@ const Routers = () => {
             <Route path="/signup" exact component={UserSignup} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/signout" exact component={Signout} />
           </Switch>
         </div>
       </Router>
