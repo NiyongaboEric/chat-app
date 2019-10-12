@@ -1,0 +1,117 @@
+.signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.signup-content {
+  width: 60%;
+  overflow-y: scroll;
+}
+
+.signup-content .logo {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.signup-content .signup-details, .signup-content .signup-form, .signup-content .signup-confirm-title, .signup-content .signup-confirm-message {
+  width: 50%;
+  margin: auto;
+}
+
+.signup-details .motto {
+  color: #2e4369;
+}
+
+.signup-content .signup-details span.signin-link {
+  font-size: 18px;
+  display: block;
+  text-align: center;
+}
+
+.signup-content .signup-details a {
+  color: #00b9ff;
+  text-decoration: underline;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.signup-content .form-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  color: rgba(0, 0, 0, .7);
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+  margin-top: 20px;
+  font-size: 15px;
+  width: 100%;
+  font-family: fontawesome;
+  border: 1px solid rgba(0, 0, 0, .12);
+  height: 44px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #2ed06e;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  background-size: 100%;
+  margin-top: 20px;
+  height: 40px;
+  font-size: 18px;
+  width: 100%;
+  font-family: fontawesome;
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 5px;
+}
+
+input:active {
+  outline: #00b9ff;
+}
+
+button:hover {
+  background-color: #1B7940;
+}
+
+.signup-form form {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.signup-content .signup-confirm-title {
+  color: #2d2d2d;
+  margin-top: 3em;
+  font-size: 20px;
+}
+
+.signup-content .signup-confirm-message {
+  margin-top: 2em;
+  word-spacing: 2px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+input[type="file"] {
+  border: 1px solid rgba(0, 0, 0, .12);
+  margin-top: 20px;
+}
+
+.signup-content .form-confirm-btn .form-back-btn {
+  width: 40%;
+  background-color: #dc3545;
+}
+
+.signup-content .form-confirm-btn .form-back-btn:hover {
+  width: 40%;
+  background-color: #7b2129;
+}
+
+.signup-content .form-confirm-btn .form-next-btn {
+  width: 40%;
+  float: right;
+}

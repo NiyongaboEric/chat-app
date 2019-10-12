@@ -1,0 +1,68 @@
+.signup-container {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  padding-top: 40px;
+}
+
+h1.logo a {
+  background-image: url(../../../Images/logo.jpg);
+  display: inline-block;
+  height: 96px;
+  width: 180px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+h1.logo {
+  text-align: center;
+  margin: 0 0 40px;
+  margin: 0px 4%;
+}
+
+.panel {
+  max-width: 430px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  background-color: #210D26;
+}
+
+.panel h3 {
+  color: #fff;
+  margin: 40px 0 0;
+  font-size: 24px;
+  padding-top: 20px;
+}
+
+.panel form {
+  padding: 40px;
+}
+
+.panel form .signin-email input[type="email"], .panel .signin-password input[type="password"] {
+  padding-left: 50px;
+}
+
+.panel .panel-footer {
+  text-decoration: none;
+  display: block;
+  background: black;
+  color: white;
+  padding: 17px 0;
+  border-radius: 5px;
+}
+
+.panel .panel-footer>span {
+  color: #00b9ff;
+  text-decoration: underline;
+}
+
+.signin-email, .signin-password {
+  position: relative;
+}
+
+.signin-email .input-email-icon, .signin-password .input-password-icon {
+  position: absolute;
+  left: 3px;
+  top: calc(50% - 0em);
+  font-size: 20px;
+}
