@@ -6,14 +6,23 @@ import '../signup/signup.css';
 import { signinApi } from '../../../Redux/actions/signin';
 import SigninError from '../../errors/signin';
 
-class Signin extends Component  {
-  
+export class Signin extends Component  {
+  state = {
+    email: '',
+    password: ''
+  }
+
+  onHandleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   onhandleSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = e.target;
+    const { email, password } = this.state;
+    
     const credentials = {
-      email: email.value, 
-      password: password.value 
+      email, 
+      password 
     };
     this.props.onSigninClick(credentials);
   }
@@ -34,12 +43,14 @@ class Signin extends Component  {
             <div className="panel" id="login">
               <h3>Log in to your account</h3>
 
-              <form onSubmit={this.onhandleSubmit}>
+              <form onSubmit={this.onhandleSubmit} id="login_form">
               { message && <SigninError error={message}/> }
                 <div className="form-input signin-email">
                   <input
                     type="email"
                     name="email"
+                    value={this.state.email}
+                    onChange={this.onHandleChange}
                     placeholder={email}
                     required
                   />
@@ -51,6 +62,8 @@ class Signin extends Component  {
                   <input
                     type="password"
                     name="password"
+                    value={this.state.password}
+                    onChange={this.onHandleChange}
                     placeholder={password}
                     required
                   />

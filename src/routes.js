@@ -16,6 +16,7 @@ const Routers = () => {
       <Router>
         <div className="container">
           <Switch>
+            <Route path="/" exact component={Signin} />
             <Route path="/signup" exact component={UserSignup} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/dashboard" exact component={Dashboard} />
